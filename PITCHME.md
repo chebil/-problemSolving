@@ -6,7 +6,7 @@ footer: College of Computer Engineering and Sciences  - September 2020
 
  # <!-- fit --> IEEEXTREME Competition Training 
 
-## Dr. khalil Chebil 
+## Dr. Khalil Chebil 
 ---
 # Content
 - Problem Solving Challenge
@@ -15,16 +15,56 @@ footer: College of Computer Engineering and Sciences  - September 2020
     - Maximum Subsequence Problem
 ---
 # Problem Solving Challenge
-- Hard to design algorithms that are 
+>- Hard to design algorithms that are 
     - Correct 
     - Efficient 
     - Implementable
-- Need to know about
+>- Need to know about
     - Design and modeling techniques
     - Resources - don't reinvent the wheel
 
 ----
-# Maximum Subsequence Problem
+# First example: Computing $a^n$ 
+>Iterative Brute Force Solution O(n) 
+```java
+int pow(int a, int n){
+    int res=1;
+    for(int i=0;i<n;i++)
+        res*=a;
+    return res;
+}
+```
+----
+#  Computing $a^n$ (cont.)
+>Recursive Solution O(n) 
+```java
+int pow(int a, int n){
+    if(n==0)
+      return 1;
+    return a*pow(a,n-1);
+  } 
+```
+----
+#  Compute $a^n$ (cont.)
+>Decrerase and conquer Solution
+
+```java
+int pow(int a, int n){
+    if(n==0)
+      return 1;
+    if(n==1)
+      return a;
+    if(n%2==0){
+      int m=pow(a,n/2);
+      return m*m;
+    }  
+    return a*pow(a,n-1);
+}
+```
+![bg right 90%](./assets/fig1.PNG)
+
+----
+# Second example: Maximum Subsequence Problem
 ```java
 int maxSubSum(int[]a){
     int maxSum = 0; 
