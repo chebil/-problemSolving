@@ -155,4 +155,4 @@ int maxSubSum( int[]a )
 ````
 ----
 # Practice Problems: Maximum Subsequence Problem
-![](./assets/fig2.PNG)
+![100%](./assets/fig2.PNG)
