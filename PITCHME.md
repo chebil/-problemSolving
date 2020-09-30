@@ -10,9 +10,10 @@ footer: College of Computer Engineering and Sciences  - September 2020
 ---
 # Content
 - Problem Solving Challenge
-- Solving Techniques
+- Problem Solving Techniques
 - Practice Problems
-    - Maximum Subsequence Problem
+  - Computing $a^n$
+  - Maximum Subsequence Problem
 ---
 # Problem Solving Challenge
 >- Hard to design algorithms that are 
@@ -24,8 +25,29 @@ footer: College of Computer Engineering and Sciences  - September 2020
     - Resources - don't reinvent the wheel
 
 ----
-# First example: Computing $a^n$ 
->Iterative Brute Force Solution O(n) 
+#
+# Problem Solving Techniques
+
+- **Brute Force & Exhaustive Search**: Try all possibilities 
+
+- **Divide & Conquer**: break problem into distinct subproblems
+
+- **Decrease & Conquer**: solve a smaller instance of the problem 
+
+- **Dynamic Programming**: break problem into overlapping subproblems 
+
+- **Greedy Algorithms**: repeatedly do what is best now
+
+- **Transform & Conquer**: convert problem to another one
+
+- **Iterative Improvement**: repeatedly improve current solution
+
+
+
+----
+# Practice Problems: Computing $a^n$ 
+>Iterative Solution :
+Multiply 1 by a n times.  
 ```java
 int pow(int a, int n){
     int res=1;
@@ -34,9 +56,11 @@ int pow(int a, int n){
     return res;
 }
 ```
+$$Complexity ~ O(n)$$
 ----
-#  Computing $a^n$ (cont.)
->Recursive Solution O(n) 
+#  Practice Problems: Computing $a^n$ (cont.)
+>Recursive Solution 
+  $a^n = a \times a^{n-1}$
 ```java
 int pow(int a, int n){
     if(n==0)
@@ -44,27 +68,37 @@ int pow(int a, int n){
     return a*pow(a,n-1);
   } 
 ```
+$$Complexity ~ O(n)$$
 ----
 #  Compute $a^n$ (cont.)
->Decrerase and conquer Solution
-
+> Decrerase and conquer Solution
 ```java
 int pow(int a, int n){
-    if(n==0)
+    if(n == 0)
       return 1;
-    if(n==1)
+    if(n == 1)
       return a;
-    if(n%2==0){
+    if(n % 2 == 0){
       int m=pow(a,n/2);
       return m*m;
     }  
     return a*pow(a,n-1);
 }
 ```
-![bg right 90%](./assets/fig1.PNG)
+![bg right 85%](./assets/fig1.PNG)
 
 ----
-# Second example: Maximum Subsequence Problem
+# Practice Problems: Maximum Subsequence Problem
+Given (possibly negative) integers $A_1, A_2,\dots, A_N$, find the maximum value of
+$$\sum_{k=i}^{j} A_k$$
+For convenience, the maximum subsequence sum is zero if all the integers are negative.
+- Example: input -2, 11, -4, 13, -5, -2
+  - The answer is 20 ($A_2$ through $A_4$)
+
+----
+#
+# Practice Problems: Maximum Subsequence Problem
+$$Brute~force~ O(N^3)$$
 ```java
 int maxSubSum(int[]a){
     int maxSum = 0; 
@@ -80,3 +114,50 @@ int maxSubSum(int[]a){
     return maxSum; 
   }
 ````
+----
+#
+# Practice Problems: Maximum Subsequence Problem
+$$Optimized~Brute~force~ O(N^2)$$
+```java
+int maxSubSum(int[]a){
+  int maxSum = 0; 
+  for( int i = 0; i < a.length; i++ ) 
+  { 
+    int thisSum = 0; 
+    for( int j = i; j < a.length; j++ ) 
+    { 
+      thisSum += a[ j ]; 
+      if( thisSum > maxSum ) 
+        maxSum = thisSum; 
+    } 
+  } 
+  return maxSum; 
+  }
+````
+----
+#
+# Practice Problems: Maximum Subsequence Problem
+$$Dynamic~Programming~ O(N)$$
+```java
+int maxSubSum( int[]a ) 
+{ 
+  int maxSum = 0, thisSum = 0; 
+  for( int j = 0; j < a.length; j++ ) 
+  { 
+    thisSum += a[ j ]; 
+    if( thisSum > maxSum ) 
+      maxSum = thisSum; 
+    else if( thisSum < 0 ) 
+      thisSum = 0; 
+  } 
+  return maxSum; 
+} 
+````
+----
+#
+#
+#
+
+#
+# Practice Problems: Maximum Subsequence Problem
+![](./assets/fig2.PNG)
