@@ -7,6 +7,7 @@ footer: College of Computer Engineering and Sciences  - September 2020
  # <!-- fit --> IEEEXTREME Competition Training 
 
 ## Dr. Khalil Chebil 
+### <k.chebil@psau.edu.sa>
 ---
 # Content
 - Problem Solving Challenge
